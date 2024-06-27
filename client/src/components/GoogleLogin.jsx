@@ -22,6 +22,7 @@ export default ({ user, setUser }) => {
                 const result = await googleAuth(authResult.code);
                 console.log(result.data);
                 setUser(result.data.data.user);
+                localStorage.setItem('user',result.data.data.user.name);
 				localStorage.setItem('token',result.data.token);
                 alert("successfully logged in");
                 navigate('/home');  // Navigate to home after successful login

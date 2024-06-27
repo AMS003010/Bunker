@@ -8,7 +8,8 @@ const compression = require('compression');
 const rateLimit = require('express-rate-limit');
 const dotenv = require('dotenv');
 
-const router = require('./routes/routes');
+//const router = require('./routes/routes');
+const fileRoutes = require("./routes/fileRoutes");
 const authRouter = require('./routes/authRoutes');
 const AppError = require('./utils/appError');
 const errorController = require('./controllers/errorController');
@@ -58,7 +59,7 @@ app.use(xss()); // <- Data Sanitization against xss
 app.use(compression());
 
 app.use('/api/v1/auth/', authRouter);
-app.use('/api/v1/', router); // <- Calling the router
+app.use('/api/v1/file', fileRoutes); // <- Calling the router
 
 app.all('*', (req, res, next) => {	// <- Middleware to handle Non-existing Routes
 	next(new AppError(`Can't find ${req.originalUrl} on the server`, 404));

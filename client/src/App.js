@@ -4,6 +4,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 
 import LoginPage from './pages/login';
 import Home from './pages/home';
+import FileUploadComp from './components/FileUploadComp';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             <Routes>
               <Route path='/' element={<LoginPage user={user} setUser={setUser}/>}/>
               <Route path='/home' element={token ? <Home/> : <LoginPage/>}/>
+              <Route path='/upload' element={<FileUploadComp/>}/>
             </Routes>
           </div>
         </BrowserRouter>
